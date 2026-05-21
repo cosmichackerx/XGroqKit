@@ -1,6 +1,5 @@
 Here’s a polished section you can append directly into your `README.md` for **XGroqKit**:
 
-````md
 # XGroqKit
 A lightweight, asynchronous Android client for streaming Groq API responses using Kotlin Coroutines (`Flow`) and OkHttp.
 
