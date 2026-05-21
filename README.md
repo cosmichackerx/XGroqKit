@@ -1,7 +1,7 @@
 # XGroqKit
 A lightweight, asynchronous Android client for streaming Groq API responses using Kotlin Coroutines (Flow) and OkHttp.
 
-###⚙️ Installation & Setup
+### ⚙️ Installation & Setup
 **1. Add the Object**
 Copy the GroqKit.kt file into your project's data or network layer (e.g., com.yourname.app.data.api).
 
