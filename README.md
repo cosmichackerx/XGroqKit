@@ -29,3 +29,50 @@ android {
     }
 }
 ```
+### 💻 Usage Tutorial
+**GroqKit** is best used within a ViewModel to update your UI state as the AI types its response.
+
+**Basic Implementation**
+```kotlin
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.launch
+
+class ChatViewModel : ViewModel() {
+
+    private val _aiResponse = MutableStateFlow("")
+    val aiResponse = _aiResponse.asStateFlow()
+
+    fun fetchAnswer(prompt: String) {
+        // Clear previous response
+        _aiResponse.value = ""
+
+        viewModelScope.launch {
+            // GroqKit returns a Flow<String> of tokens
+            GroqKit.streamChat(prompt = prompt, model = "llama-3.3-70b-versatile")
+                .catch { exception ->
+                    _aiResponse.value = "Error: ${exception.message}"
+                }
+                .collect { token ->
+                    // Append each incoming chunk to the state
+                    _aiResponse.value += token
+                }
+        }
+    }
+}
+```
+**Collecting in Jetpack Compose**
+```kotlin
+@Composable
+fun ChatScreen(viewModel: ChatViewModel) {
+    val responseText by viewModel.aiResponse.collectAsState()
+
+    Text(
+        text = responseText,
+        modifier = Modifier.padding(16.dp)
+    )
+}
+```
