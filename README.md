@@ -4,6 +4,23 @@ A lightweight, asynchronous Android client for streaming Groq API responses usin
 
 ---
 
+# 📦 Recommended Dependencies
+
+```kotlin
+dependencies {
+
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+
+    implementation("com.google.code.gson:gson:2.10.1")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+}
+```
+
+---
+
 ## ⚙️ Installation & Setup
 
 ### 1. Add the Object
@@ -678,23 +695,6 @@ Generate a mysterious cyberpunk NPC dialogue.
 - Jetpack Compose compatible
 - Graceful failure handling
 - Lightweight & modular
-
----
-
-# 📦 Recommended Dependencies
-
-```kotlin
-dependencies {
-
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
-
-    implementation("com.google.code.gson:gson:2.10.1")
-
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
-
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
-}
-```
 
 ---
 
